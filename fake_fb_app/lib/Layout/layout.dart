@@ -58,8 +58,9 @@ class _HomePageState extends State<HomePage> {
         body: TabBarView(
           children: [
             HomeTab(),
-            HomeTab(),
             Icon(Icons.directions_bike),
+            Icon(Icons.directions_bike),
+
           ],
         ),
       ),
