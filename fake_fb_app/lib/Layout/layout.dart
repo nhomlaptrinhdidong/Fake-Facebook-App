@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'TabController/tabhome.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -56,9 +57,10 @@ class _HomePageState extends State<HomePage> {
         ),
         body: TabBarView(
           children: [
+            HomeTab(),
             Icon(Icons.directions_bike),
             Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
+
           ],
         ),
       ),
