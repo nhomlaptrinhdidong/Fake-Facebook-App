@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'TabController/tabfriends.dart';
 import 'TabController/tabhome.dart';
+import 'TabController/tabnotications.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -60,8 +61,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             HomeTab(),
             FriendsTab(),
-            //Icon(Icons.directions_bike),
-            Icon(Icons.directions_bike),
+            ListTileWid(),
 
           ],
         ),

@@ -1,5 +1,5 @@
+import 'package:fake_fb_app/Layout/layout.dart';
 import 'package:flutter/material.dart';
-import 'maintab-home-menu.dart';
 
 class FakeBook extends StatefulWidget {
   const FakeBook({Key? key}) : super(key: key);
@@ -10,9 +10,10 @@ class FakeBook extends StatefulWidget {
 
 class _FakeBookState extends State<FakeBook> {
   bool passSecurity = true;
-
   @override
   Widget build(BuildContext context) {
+    final username = TextEditingController();
+    final password = TextEditingController();
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -21,7 +22,8 @@ class _FakeBookState extends State<FakeBook> {
             Center(
               child: Container(
                 //padding: const EdgeInsets.only(bottom: 100),
-                child: Center(child: Image.asset('images/facebook.jpg')),
+                child: Center(
+                    child: Image.asset('assets/images/sign_in_logo.jpg')),
               ),
             ),
             Container(
@@ -40,10 +42,10 @@ class _FakeBookState extends State<FakeBook> {
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(50, 30, 50, 15),
-              child: const Center(
+              child: Center(
                 child: TextField(
+                  controller: username,
                   decoration: InputDecoration(
-                    //hintText: 'Tài khoản',
                     labelText: 'Tài khoản',
                   ),
                 ),
@@ -53,6 +55,7 @@ class _FakeBookState extends State<FakeBook> {
               child: Container(
                 padding: const EdgeInsets.fromLTRB(50, 0, 50, 30),
                 child: TextField(
+                  controller: password,
                   decoration: InputDecoration(
                     //hintText: 'Mật khẩu',
                     labelText: 'Mật khẩu',
@@ -60,7 +63,7 @@ class _FakeBookState extends State<FakeBook> {
                         onPressed: () {
                           setState(() {
                             passSecurity = !passSecurity;
-                          }); 
+                          });
                         },
                         icon: Icon(passSecurity
                             ? Icons.remove_red_eye
@@ -80,11 +83,37 @@ class _FakeBookState extends State<FakeBook> {
                       borderRadius: BorderRadius.circular(10),
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SeccondCreen()),
-                          );
+                          if (username.text == "" || password.text == "") {
+                            String mess;
+                            if (username.text == "") {
+                              mess = 'Vui lòng nhập email!!!';
+                            } else {
+                              mess = 'Vui lòng nhập pasword!!!';
+                            }
+
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext builder) {
+                                  return AlertDialog(
+                                      content: Text(mess),
+                                      title: Text('Thông báo'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text('Tắt'))
+                                      ],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(2.0))));
+                                });
+                          } else if (username.text == password.text) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomePage()));
+                          }
                         },
                         child: const Text(
                           'Đăng nhập',

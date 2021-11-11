@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -7,8 +9,11 @@ class HomeTab extends StatefulWidget {
   @override
   _HomeTabState createState() => _HomeTabState();
 }
-
+Random random = new Random();
+  int randomNumber = random.nextInt(100);
 class _HomeTabState extends State<HomeTab> {
+  bool liked = false;
+  
   @override
   Widget build(BuildContext context) {
     final String description =
@@ -176,6 +181,7 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   Container newPost(String description, username, imagesAvt, images) {
+  
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -280,7 +286,7 @@ class _HomeTabState extends State<HomeTab> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 3),
-                        child: Text('1.232'),
+                        child: Text(randomNumber.toString()),
                       ),
                     ],
                   ),
@@ -299,12 +305,20 @@ class _HomeTabState extends State<HomeTab> {
                 Expanded(
                   child: Row(
                     children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.thumb_up, color: Colors.blue),
-
+                      IconButton(                        
+                        icon:  
+                          liked ?Icon(Icons.thumb_up)  :Icon( Icons.thumb_up_alt_outlined), 
+                          color: liked ? Colors.blue : Colors.black,                  
+                          onPressed: () {
+                          liked=!liked;
+                          randomNumber+= (liked?1:-1);
+                          setState(() {
+                            
+                          });
+                        },
                       ),
-                      Text('Like')
+                      
+                      Text('Like',style: TextStyle(color: liked ? Colors.blue : Colors.black,),)
                     ],
                   ),
                   flex: 2,
