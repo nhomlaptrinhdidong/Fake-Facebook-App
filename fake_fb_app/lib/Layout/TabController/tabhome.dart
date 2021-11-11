@@ -13,14 +13,15 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     final String description =
         "Flutter is Google’s mobile UI framework for crafting high-quality native interfaces on iOS and Android in record time. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.";
+
     return ListView(
       //shrinkWrap: true,
       children: [
         titleSection(),
         function(),
         listStory(),
-        newPost(description, 'Bill', 'avt.jpg', 'avt.jpg'),
-        newPost(description, 'Bill', 'avt.jpg', 'avt.jpg'),
+        newPost('Chị dẹp', 'Huy Quần Hoa', 'tt.jpg', 'nt.jpg'),
+        newPost(description, 'Huy Quần Hoa', 'st.jpg', 'avt.jpg'),
         newPost(description, 'Bill', 'avt.jpg', 'avt.jpg'),
         newPost(description, 'Bill', 'avt.jpg', 'avt.jpg'),
       ],
@@ -33,21 +34,21 @@ class _HomeTabState extends State<HomeTab> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
-              singleStory(),
+              singleStory('avt.jpg','hnh.jpg','Tống Thành Tài'),
+              singleStory('tl.jpg','hnh.jpg','Tiến Lữ'),
+              singleStory('vkt.jpg','nt.jpg','Vũ Khắc Tiệp'),
+              singleStory('nt.jpg','vkt.jpg','Ngọc Trinh'),
+              singleStory('st.jpg','hnh.jpg','Sơn Tùng MTP'),
+              singleStory('hnh.jpg','st.jpg','Hồ Ngọc Hà'),
+              singleStory('bg.jpg','avt.jpg','Bill Gates'),
+              singleStory('tt.jpg','bg.jpg','Huy Quần Hoa'),
+              singleStory('avt.jpg','hnh.jpg','Bill'),
+              singleStory('avt.jpg','hnh.jpg','Bill'),
             ],
           ));
   }
 
-  Container singleStory() {
+  Container singleStory(String img, String avt, String username) {
     return Container(
       margin: EdgeInsets.all(7),
       child: Stack(
@@ -57,7 +58,7 @@ class _HomeTabState extends State<HomeTab> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
-                  'assets/images/avt.jpg',
+                  'assets/images/$avt',
                   height: 184,
                   width: 110,
                   fit: BoxFit.cover,
@@ -74,7 +75,7 @@ class _HomeTabState extends State<HomeTab> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.asset(
-                'assets/images/avt.jpg',
+                'assets/images/$img',
                 width: 40,
                 height: 40,
               ),
@@ -86,7 +87,7 @@ class _HomeTabState extends State<HomeTab> {
             child: Column(
               children: [
                 Text(
-                  'Tống Thành Tài',
+                  username,
                   style: TextStyle(color: Colors.white,fontSize: 13,),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
