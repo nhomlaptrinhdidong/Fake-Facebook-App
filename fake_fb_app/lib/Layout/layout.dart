@@ -17,44 +17,43 @@ class _HomePageState extends State<HomePage> {
       length: 3,
       child: Scaffold(
         drawer: Drawer(
-            child: Material(
-              color: Color.fromRGBO(50, 75, 205, 1),
-              child: ListView(
-                padding: EdgeInsets.all(8),
-                children: [
-                  const SizedBox(
-                    height: 48,
-                  ),
-                  buildMenuItem(text: 'Profile', icon: Icons.perm_identity),
-                  buildMenuItem(text: 'Security', icon: Icons.security_sharp),
-                  buildMenuItem(
-                      text: 'Sign Out', icon: Icons.remove_circle_sharp)
-                ],
-              ),
+          child: Material(
+            color: Color.fromRGBO(50, 75, 205, 1),
+            child: ListView(
+              padding: EdgeInsets.all(8),
+              children: [
+                const SizedBox(
+                  height: 48,
+                ),
+                buildMenuItem(text: 'Profile', icon: Icons.perm_identity),
+                buildMenuItem(text: 'Security', icon: Icons.security_sharp),
+                buildMenuItem(text: 'Sign Out', icon: Icons.remove_circle_sharp)
+              ],
             ),
           ),
+        ),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
           child: AppBar(
             bottom: TabBar(
               tabs: [
+                Container(height: 30, child: Tab(icon: Icon(Icons.home))),
+                Container(height: 30, child: Tab(icon: Icon(Icons.person))),
                 Container(
-                  height: 30,
-                  child: Tab(icon: Icon(Icons.home))),
-                Container(
-                  height: 30,
-                  child: Tab(icon: Icon(Icons.person))),
-                Container(
-                  height: 30,
-                  child: Tab(icon: Icon(Icons.notifications))),
+                    height: 30, child: Tab(icon: Icon(Icons.notifications))),
               ],
             ),
             title: Text('fakefacebook'),
             actions: <Widget>[
-              IconButton(onPressed: (){}, icon: Icon(Icons.search),),
-              IconButton(onPressed: (){}, icon: Icon(Icons.messenger_outline_rounded),)
-        
-          ],
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.search),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.messenger_outline_rounded),
+              )
+            ],
           ),
         ),
         body: TabBarView(
@@ -68,7 +67,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-Widget buildMenuItem({
+
+  Widget buildMenuItem({
     required String text,
     required IconData icon,
   }) {
