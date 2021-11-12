@@ -1,3 +1,5 @@
+import 'Layout/MenuLayout/menuprofile.dart';
+import 'Layout/MenuLayout/menusecurity.dart';
 import 'Layout/layout.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Roboto',      
       ),
-      home:FakeBook() 
+      initialRoute: '/',
+      routes: { 
+        '/': (context) => FakeBook(),
+        '/layout': (context) =>  HomePage(),
+        '/profile': (context) =>  Profile(),
+        '/security': (context) =>  Security(),
+
+      }, 
     );
   }
 }

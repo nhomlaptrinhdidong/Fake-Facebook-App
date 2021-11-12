@@ -13,6 +13,19 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('fakefacebook'),
+            actions: <Widget>[
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.search),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.messenger_outline_rounded),
+              )
+            ],
+      ),
         body: ListView(
       children: [
         Column(

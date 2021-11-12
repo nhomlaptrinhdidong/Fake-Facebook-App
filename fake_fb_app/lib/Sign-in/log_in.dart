@@ -109,10 +109,7 @@ class _FakeBookState extends State<FakeBook> {
                                               Radius.circular(2.0))));
                                 });
                           } else if (username.text == password.text) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                              Navigator.pushNamed(context, '/layout');
                           }
                         },
                         child: const Text(

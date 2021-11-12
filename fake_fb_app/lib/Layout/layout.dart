@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'MenuLayout/menuprofile.dart';
 import 'TabController/tabfriends.dart';
 import 'TabController/tabhome.dart';
 import 'TabController/tabnotications.dart';
@@ -25,9 +26,10 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 48,
                 ),
-                buildMenuItem(text: 'Profile', icon: Icons.perm_identity),
-                buildMenuItem(text: 'Security', icon: Icons.security_sharp),
-                buildMenuItem(text: 'Sign Out', icon: Icons.remove_circle_sharp)
+
+                buildMenuItem(text: 'Profile', icon: Icons.perm_identity,routerName: 'profile'),
+                buildMenuItem(text: 'Security', icon: Icons.security_sharp,routerName: 'security'),
+                buildMenuItem(text: 'Sign Out', icon: Icons.remove_circle_sharp, routerName: '')
               ],
             ),
           ),
@@ -61,7 +63,6 @@ class _HomePageState extends State<HomePage> {
             HomeTab(),
             FriendsTab(),
             ListTileWid(),
-
           ],
         ),
       ),
@@ -69,6 +70,29 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildMenuItem({
+    required String text,
+    required IconData icon,
+    required String routerName,
+  }) {
+    final color = Colors.white;
+    final hoverColor = Colors.white70;
+
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: color,
+      ),
+      title: Text(
+        text,
+        style: TextStyle(color: color),
+      ),
+      hoverColor: hoverColor,
+      onTap: () {
+        Navigator.pushNamed(context, '/$routerName');
+      },
+    );
+  }
+  Widget logout({
     required String text,
     required IconData icon,
   }) {
@@ -85,7 +109,9 @@ class _HomePageState extends State<HomePage> {
         style: TextStyle(color: color),
       ),
       hoverColor: hoverColor,
-      onTap: () {},
+      onTap: () {
+        Navigator.pop(context);
+      },
     );
   }
 }
